@@ -1,0 +1,26 @@
+{
+  "name": "clutz-npm",
+  "description": "npm package for clutz",
+  "version": "1.0.0",
+  "author": "Teppei Sato <teppeis@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/teppeis/clutz-npm#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/teppeis/clutz-npm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/teppeis/clutz-npm/issues"
+  },
+  "keywords": [
+    "closure",
+    "clutz",
+    "google-closure-compiler",
+    "npm",
+    "typescript"
+  ],
+  "license": "MIT"
+}
