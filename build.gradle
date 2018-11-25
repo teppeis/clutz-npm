@@ -18,6 +18,10 @@ project(':clutz') {
     afterEvaluate {
         mainClassName = 'com.google.javascript.clutz.DeclarationGenerator'
 
+        shadowJar {
+            version = null
+        }
+
         def closureVersion = configurations.compile.getAllDependencies().find {
             it.group == 'com.google.javascript' && it.name == 'closure-compiler'
         }.version

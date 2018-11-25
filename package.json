@@ -10,7 +10,7 @@
   "scripts": {
     "build": "run-s build:jar build:cp",
     "build:jar": "./gradlew shadowJar",
-    "build:cp": "cpr ./clutz/build/libs/clutz-1.0-all.jar ./clutz-all.jar",
+    "build:cp": "cpr ./clutz/build/libs/clutz-all.jar ./ -o",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/teppeis/clutz-npm#readme",
