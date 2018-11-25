@@ -1,0 +1,3 @@
+[submodule "clutz"]
+	path = clutz
+	url = git@github.com:angular/clutz.git
