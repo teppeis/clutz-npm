@@ -7,10 +7,14 @@
     "access": "public"
   },
   "main": "index.js",
+  "files": [
+    "clutz-all.jar"
+  ],
   "scripts": {
     "build": "run-s build:jar build:cp",
-    "build:jar": "./gradlew shadowJar",
     "build:cp": "cpr ./clutz/build/libs/clutz-all.jar ./ -o",
+    "build:jar": "./gradlew shadowJar",
+    "bump": "node bump.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/teppeis/clutz-npm#readme",
@@ -31,6 +35,7 @@
   "license": "MIT",
   "devDependencies": {
     "cpr": "^3.0.1",
+    "execa": "^1.0.0",
     "npm-run-all": "^4.1.5"
   }
 }
