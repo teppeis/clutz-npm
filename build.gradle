@@ -1,0 +1,15 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.3'
+    }
+}
+
+project(':clutz') {
+    apply plugin: 'com.github.johnrengelman.shadow'
+    afterEvaluate {
+        mainClassName = 'com.google.javascript.clutz.DeclarationGenerator'
+    }
+}
