@@ -7,9 +7,26 @@ buildscript {
     }
 }
 
+def getRevision() {
+    def proc = 'git rev-parse --short=7 HEAD'.execute()
+    proc.waitFor()
+    (proc.exitValue() == 0) ? proc.text.trim() : ''
+}
+
 project(':clutz') {
     apply plugin: 'com.github.johnrengelman.shadow'
     afterEvaluate {
         mainClassName = 'com.google.javascript.clutz.DeclarationGenerator'
+
+        def closureVersion = configurations.compile.getAllDependencies().find {
+            it.group == 'com.google.javascript' && it.name == 'closure-compiler'
+        }.version
+        version = version + ':' + getRevision() + ':' + closureVersion
+    }
+
+    task showVersion {
+        doLast {
+            println version
+        }
     }
 }
