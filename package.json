@@ -8,6 +8,9 @@
   },
   "main": "index.js",
   "scripts": {
+    "build": "run-s build:jar build:cp",
+    "build:jar": "./gradlew shadowJar",
+    "build:cp": "cpr ./clutz/build/libs/clutz-1.0-all.jar ./clutz-all.jar",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/teppeis/clutz-npm#readme",
@@ -25,5 +28,9 @@
     "npm",
     "typescript"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "cpr": "^3.0.1",
+    "npm-run-all": "^4.1.5"
+  }
 }
