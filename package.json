@@ -6,6 +6,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "engines": {
+    "node": ">=8"
+  },
   "main": "index.js",
   "bin": {
     "clutz": "bin/clutz.js",
@@ -20,14 +23,17 @@
     "build:cp": "cpr ./clutz/build/libs/clutz-all.jar ./ -o",
     "build:jar": "./gradlew shadowJar",
     "bump": "node bump.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint bin"
   },
   "dependencies": {
     "execa": "^1.0.0"
   },
   "devDependencies": {
     "cpr": "^3.0.1",
-    "npm-run-all": "^4.1.5"
+    "eslint": "^5.9.0",
+    "eslint-config-teppeis": "^8.3.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.15.2"
   },
   "homepage": "https://github.com/teppeis/clutz-npm#readme",
   "repository": {
