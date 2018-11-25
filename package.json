@@ -1,8 +1,11 @@
 {
-  "name": "clutz-npm",
+  "name": "@teppeis/clutz",
   "description": "npm package for clutz",
   "version": "1.0.0",
   "author": "Teppei Sato <teppeis@gmail.com>",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
