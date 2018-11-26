@@ -24,6 +24,19 @@ $ clutz foo.js bar.js
 $ gents foo.js bar.js
 ```
 
+## How to contribute
+
+Set up for developers
+
+```console
+$ git clone git@github.com:teppeis/clutz-npm.git
+$ cd clutz-npm
+$ git submodule update --init
+$ npm install
+$ npm run build     # make clutz-all.jar with gradle wrapper
+$ npm test
+```
+
 ## License
 
 MIT License: Teppei Sato &lt;teppeis@gmail.com&gt;
