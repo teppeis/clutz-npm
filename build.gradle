@@ -7,18 +7,21 @@ buildscript {
     }
 }
 
-def getRevision() {
-    def proc = 'git rev-parse --short=7 HEAD'.execute()
-    proc.waitFor()
-    (proc.exitValue() == 0) ? proc.text.trim() : ''
-}
-
 project(':clutz') {
     apply plugin: 'com.github.johnrengelman.shadow'
+
+    def getRevision = {
+        def proc = 'git rev-parse --short=7 HEAD'.execute([], projectDir)
+        proc.waitFor()
+        (proc.exitValue() == 0) ? proc.text.trim() : '-'
+    }
+
     afterEvaluate {
+        // for application plugin
         mainClassName = 'com.google.javascript.clutz.DeclarationGenerator'
 
         shadowJar {
+            // output filename: clutz-all.jar
             version = null
         }
 
