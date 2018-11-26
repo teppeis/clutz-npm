@@ -8,20 +8,19 @@ npm package for [clutz](https://github.com/angular/clutz) (Closure to TypeScript
 [![dependency status][deps-image]][deps-url]
 ![License][license]
 
-## Install
-
-```console
-$ npm i -g @teppeis/clutz
-```
-
 ## Usage
 
 ```console
+$ npm i -g @teppeis/clutz
 $ clutz foo.js bar.js
+$ gents foo.js bar.js
 ```
 
+or
+
 ```console
-$ gents foo.js bar.js
+$ npx clutz foo.js bar.js
+$ npx -p @teppeis/clutz gents foo.js bar.js
 ```
 
 ## How to contribute
