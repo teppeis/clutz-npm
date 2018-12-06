@@ -1,7 +1,7 @@
 {
   "name": "@teppeis/clutz",
   "description": "npm package for clutz",
-  "version": "1.0.5-77ab8e9.v20181205T145903",
+  "version": "1.0.6-cef46f2.v20181206T145523",
   "author": "Teppei Sato <teppeis@gmail.com>",
   "publishConfig": {
     "access": "public"
