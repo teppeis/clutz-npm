@@ -54,17 +54,17 @@ commands:
 jobs:
   node-v8:
     docker:
-      - image: node:8
+      - image: circleci/node:8-browsers
     steps:
       - test-nodejs
   node-v10:
     docker:
-      - image: node:10
+      - image: circleci/node:10-browsers
     steps:
       - test-nodejs
   node-v11:
     docker:
-      - image: node:11
+      - image: circleci/node:11-browsers
     steps:
       - test-nodejs
 
