@@ -7,46 +7,37 @@ commands:
           name: Versions
           command: npm version
       - checkout
+      - run:
+          name: Pull Submodules
+          command: git submodule update --init
       - restore_cache:
+          name: "Restoring Cache: npm cache"
           keys:
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-master-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
+      - restore_cache:
+          name: "Restoring Cache: gradle wrapper"
+          keys:
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
       - run:
           name: Install dependencies
           command: npm ci
       - run:
-          name: Test
-          command: npm test
-      - save-npm-cache
-  test-nodejs-v6:
-    steps:
-      - run:
-          name: Versions
-          command: npm version
-      - checkout
-      - restore_cache:
-          keys:
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-lock-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-master-{{ .Environment.CIRCLE_JOB }}
-      - run:
-          name: Install dependencies
-          command: npm install
+          name: Compile
+          command: npm run build
       - run:
           name: Test
           command: npm test
-      - save-npm-lock
       - save-npm-cache
-  save-npm-lock:
-    steps:
       - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
+          name: "Restoring Cache: gradle wrapper"
           paths:
-            - node_modules
+            - ~/.gradle/wrapper/
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
   save-npm-cache:
     steps:
       - save_cache:
+          name: "Saving Cache: npm cache"
           key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
           paths:
             - ~/.npm/_cacache
@@ -54,17 +45,17 @@ commands:
 jobs:
   node-v8:
     docker:
-      - image: node:8
+      - image: circleci/node:8-browsers
     steps:
       - test-nodejs
   node-v10:
     docker:
-      - image: node:10
+      - image: circleci/node:10-browsers
     steps:
       - test-nodejs
   node-v11:
     docker:
-      - image: node:11
+      - image: circleci/node:11-browsers
     steps:
       - test-nodejs
 
