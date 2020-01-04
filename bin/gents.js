@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 
-'use strict';
+"use strict";
 
-const path = require('path');
-const execa = require('execa');
+const path = require("path");
+const execa = require("execa");
 
 try {
   execa.sync(
-    'java',
+    "java",
     [
-      '-cp',
+      "-cp",
       `${path.dirname(__dirname)}/clutz-all.jar`,
-      'com.google.javascript.gents.TypeScriptGenerator',
+      "com.google.javascript.gents.TypeScriptGenerator",
       ...process.argv.slice(2),
     ],
-    {stdio: 'inherit'}
+    { stdio: "inherit" }
   );
 } catch (e) {
   process.exit(e.code);
