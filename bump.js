@@ -7,7 +7,9 @@ const semver = require("semver");
   const { stdout } = await execa(`${__dirname}/gradlew`, ["-q", "showVersion"]);
   let [, clutzVersion, clutzGitCommit, closureVersion] = /^([\d.]+):(\w+):(.+)$/.exec(stdout);
   const clutzSemver = semver.coerce(clutzVersion);
-  const { major, minor, patch, prerelease } = semver(require(`${__dirname}/package.json`).version);
+  const { major, minor, patch, prerelease } = semver.parse(
+    require(`${__dirname}/package.json`).version
+  );
   if (major === clutzSemver.major && minor === clutzSemver.minor) {
     if (prerelease.length > 0) {
       // bump patch version
