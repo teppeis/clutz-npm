@@ -19,7 +19,7 @@ $ gents foo.js bar.js
 or
 
 ```console
-$ npx clutz foo.js bar.js
+$ npx @teppeis/clutz foo.js bar.js
 $ npx -p @teppeis/clutz gents foo.js bar.js
 ```
 
