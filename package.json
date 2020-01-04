@@ -20,8 +20,7 @@
   "scripts": {
     "build": "run-s build:jar build:cp",
     "build:cp": "cpr ./clutz/build/libs/clutz-all.jar ./ -o",
-    "build:jar": "./gradlew shadowJar --refresh-dependencies",
-    "build:jar-no-refresh": "./gradlew shadowJar",
+    "build:jar": "./gradlew shadowJar",
     "bump": "node bump.js",
     "test": "eslint bin *.js"
   },
