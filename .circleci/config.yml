@@ -43,25 +43,19 @@ commands:
             - ~/.npm/_cacache
 
 jobs:
-  node-v8:
-    docker:
-      - image: circleci/node:8-browsers
-    steps:
-      - test-nodejs
   node-v10:
     docker:
-      - image: circleci/node:10-browsers
+      - image: circleci/node:10-buster-browsers
     steps:
       - test-nodejs
-  node-v11:
+  node-v12:
     docker:
-      - image: circleci/node:11-browsers
+      - image: circleci/node:12-buster-browsers
     steps:
       - test-nodejs
 
 workflows:
   node-multi-build:
     jobs:
-      - node-v8
       - node-v10
-      - node-v11
+      - node-v12
