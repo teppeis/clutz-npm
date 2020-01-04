@@ -23,7 +23,7 @@
     "build:jar": "./gradlew shadowJar --refresh-dependencies",
     "build:jar-no-refresh": "./gradlew shadowJar",
     "bump": "node bump.js",
-    "test": "eslint bin"
+    "test": "eslint bin *.js"
   },
   "dependencies": {
     "execa": "^4.0.0"
@@ -32,7 +32,8 @@
     "cpr": "^3.0.1",
     "eslint": "^6.8.0",
     "eslint-config-teppeis": "^11.0.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "semver": "^7.1.1"
   },
   "homepage": "https://github.com/teppeis/clutz-npm#readme",
   "repository": {

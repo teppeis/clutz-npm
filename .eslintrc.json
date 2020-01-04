@@ -1,3 +1,6 @@
 {
-  "extends": ["teppeis/node-v10", "teppeis/+prettier"]
+  "extends": ["teppeis/node-v10", "teppeis/+prettier"],
+  "rules": {
+    "prefer-const": ["error", {"destructuring": "all"}]
+  }
 }
