@@ -25,7 +25,7 @@
     "test": "eslint bin *.js"
   },
   "dependencies": {
-    "execa": "^4.0.3"
+    "execa": "^4.1.0"
   },
   "devDependencies": {
     "cpr": "^3.0.1",
